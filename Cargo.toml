@@ -1,9 +1,9 @@
 [package]
 name = "pocket"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 rust-version = "1.92"
-description = "A tiny durable job queue that runs inside an Android app"
+description = "Save a post from X — video, card or text — and keep it if Android kills the app"
 license = "MIT OR Apache-2.0"
 publish = false
 
