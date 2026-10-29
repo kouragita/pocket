@@ -10,16 +10,33 @@ android {
         applicationId = "dev.kouragita.pocket"
         minSdk = 30
         targetSdk = 36
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 2
+        versionName = "0.2.0"
         ndk {
             abiFilters += listOf("x86_64", "arm64-v8a")
+        }
+    }
+
+    // Signing material lives outside the repository; the build stays unsigned
+    // when it is absent, so a clean clone still assembles.
+    val keystorePath = System.getenv("POCKET_KEYSTORE")
+    signingConfigs {
+        if (keystorePath != null) {
+            create("release") {
+                storeFile = file(keystorePath)
+                storePassword = System.getenv("POCKET_KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("POCKET_KEY_ALIAS")
+                keyPassword = System.getenv("POCKET_KEY_PASSWORD")
+            }
         }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
+            if (keystorePath != null) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
 
