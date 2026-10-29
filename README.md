@@ -1,15 +1,33 @@
 # Pocket
 
-A tiny durable job queue that runs **inside an Android app**. Share text from any
-app and a Rust worker — supervised by [Rivium](https://github.com/rivium-rs/rivium),
-queued by [Apalis](https://github.com/apalis-dev/apalis) — describes it, then reports
-back through a notification.
+Save a post from X — its video, a card image, or just its text — without leaving the app
+you found it in. A Rust worker, supervised by [Rivium](https://github.com/rivium-rs/rivium)
+and queued by [Apalis](https://github.com/apalis-dev/apalis), does the work inside the
+phone, and the job survives the app being killed.
 
 The same `App` runs on a laptop with `cargo run` and inside the phone. Nothing in the
 queue code knows which host it is under.
 
-The original challenge brief is preserved as [CHALLENGE.md](CHALLENGE.md).
+## Download
 
+**[Latest release →](https://github.com/kouragita/pocket/releases/latest)**
+
+| | |
+| --- | --- |
+| File | `Pocket-0.2.0-arm64-v8a.apk` |
+| Android | 11 (API 30) or newer |
+| CPU | **arm64-v8a** — this is the only ABI in the release; it will not install on older 32-bit phones |
+| Size | ~6 MB |
+| Checksum | the release page lists the APK's SHA-256; check it before installing |
+
+It is not on Play, so install it as a sideloaded APK: download it on the phone, open it,
+and allow "install unknown apps" for whichever app you downloaded with.
+
+On first run the app asks for **notifications** (that is how a finished job reports back).
+Granting **display over other apps** is optional: with it, sharing a link shows a small
+Video / Card / Text panel over whatever you were using instead of opening Pocket.
+
+## What it does
 ## What it does
 
 Share a snippet from Chrome, a note, anywhere:
