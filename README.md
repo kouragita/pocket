@@ -351,6 +351,10 @@ Pinned exactly; `Cargo.lock` is committed.
 | minSdk / compileSdk | 30 / 36 |
 | ABIs | `arm64-v8a`, `x86_64` |
 
+## Licence
+
+GPL-3.0, the same licence as the project this grew out of. See [LICENSE](LICENSE).
+
 ## Known limits
 
 - Tested on one physical phone (TECNO KM7k, Android 15, arm64-v8a) and one x86_64
