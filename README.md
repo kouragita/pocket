@@ -23,9 +23,9 @@ queue code knows which host it is under.
 It is not on Play, so install it as a sideloaded APK: download it on the phone, open it,
 and allow "install unknown apps" for whichever app you downloaded with.
 
-This build is signed with its own key, not the Android debug key, so if you already have a
-debug build of the same package installed, uninstall it first: Android will not replace an
-app with a different signing key.
+Debug and release builds share this project's key when it is configured, so a release
+installs straight over a debug build. A build signed with somebody else's key still needs
+an uninstall first, because Android refuses to replace an app with a different signing key.
 
 On first run the app asks for **notifications** (that is how a finished job reports back).
 Granting **display over other apps** is optional: with it, sharing a link shows a small

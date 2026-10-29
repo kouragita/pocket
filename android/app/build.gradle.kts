@@ -38,6 +38,14 @@ android {
                 signingConfig = signingConfigs.getByName("release")
             }
         }
+        // Debug builds share the project key when it is configured, so a release
+        // APK can be installed straight over a debug build instead of forcing an
+        // uninstall (Android rejects replacing an app signed with another key).
+        debug {
+            if (keystorePath != null) {
+                signingConfig = signingConfigs.getByName("release")
+            }
+        }
     }
 
     compileOptions {
