@@ -8,10 +8,8 @@ cd "$(dirname "$0")/.."
 export RUSTFLAGS='-C link-arg=-Wl,-z,max-page-size=16384'
 
 cargo ndk -t arm64-v8a --platform 30 build --release --lib
-cargo ndk -t x86_64 --platform 30 build --release --lib
 
-mkdir -p android/app/src/main/jniLibs/arm64-v8a android/app/src/main/jniLibs/x86_64
+mkdir -p android/app/src/main/jniLibs/arm64-v8a
 cp target/aarch64-linux-android/release/libpocket.so android/app/src/main/jniLibs/arm64-v8a/
-cp target/x86_64-linux-android/release/libpocket.so android/app/src/main/jniLibs/x86_64/
 
 ls -la android/app/src/main/jniLibs/*/libpocket.so

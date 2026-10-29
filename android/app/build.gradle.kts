@@ -13,7 +13,7 @@ android {
         versionCode = 2
         versionName = "0.2.0"
         ndk {
-            abiFilters += listOf("x86_64", "arm64-v8a")
+            abiFilters += listOf("arm64-v8a")
         }
     }
 
