@@ -32,7 +32,6 @@ Granting **display over other apps** is optional: with it, sharing a link shows 
 Video / Card / Text panel over whatever you were using instead of opening Pocket.
 
 ## What it does
-## What it does
 
 Share a snippet from Chrome, a note, anywhere:
 
@@ -159,7 +158,7 @@ Requires Rust 1.92+, JDK 21, Android SDK platform 36 and **NDK 28.1.13356709**, 
 `cargo-ndk 4.1.2`.
 
 ```sh
-android/build-rust.sh          # cross-compiles libpocket.so for arm64-v8a and x86_64
+android/build-rust.sh          # cross-compiles libpocket.so for arm64-v8a
 cd android && ./gradlew installDebug
 ```
 
@@ -324,7 +323,7 @@ Tested on a TECNO KM7k running Android 15 (API 35), arm64-v8a. Rivium's own Andr
 lane only compiles the library and inspects its ELF properties, so these are device
 observations rather than a repeat of CI.
 
-- The APK ships `arm64-v8a` and `x86_64`; the phone installed **only** `arm64`
+- The published APK ships `arm64-v8a` only.
   (`primaryCpuAbi=arm64-v8a`, `secondaryCpuAbi=null`), so the arm64 build is the one that
   actually ran.
 - The host was ready about **1 s** after launch, and a shared note finished in about
@@ -353,7 +352,7 @@ Pinned exactly; `Cargo.lock` is committed.
 | cargo-ndk | 4.1.2 |
 | JDK / Gradle / AGP | 21.0.13 / 9.8.2 / 9.4.1 |
 | minSdk / compileSdk | 30 / 36 |
-| ABIs | `arm64-v8a`, `x86_64` |
+| ABIs | `arm64-v8a` |
 
 ## Licence
 
@@ -361,8 +360,9 @@ GPL-3.0, the same licence as the project this grew out of. See [LICENSE](LICENSE
 
 ## Known limits
 
-- Tested on one physical phone (TECNO KM7k, Android 15, arm64-v8a) and one x86_64
-  emulator (API 36). Nothing else was tried.
+- Tested on one physical phone (TECNO KM7k, Android 15, arm64-v8a), which is the ABI the
+  release ships. During development the queue was also exercised on an x86_64 emulator;
+  that emulator is not part of this release.
 - Delivery is **at-least-once**. The handler is idempotent, so a retry overwrites the
   same row rather than duplicating results.
 - `apalis-sqlite` sets `PRAGMA synchronous = OFF`. Jobs survive process death, but not
