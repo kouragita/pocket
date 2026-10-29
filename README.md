@@ -17,7 +17,7 @@ queue code knows which host it is under.
 | File | `Pocket-0.2.0-arm64-v8a.apk` |
 | Android | 11 (API 30) or newer |
 | CPU | **arm64-v8a** — this is the only ABI in the release; it will not install on older 32-bit phones |
-| Size | ~6 MB |
+| Size | 16 MB |
 | Checksum | the release page lists the APK's SHA-256; check it before installing |
 
 It is not on Play, so install it as a sideloaded APK: download it on the phone, open it,
