@@ -1,0 +1,33 @@
+[package]
+name = "pocket"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.92"
+description = "A tiny durable job queue that runs inside an Android app"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "pocket"
+path = "src/main.rs"
+
+[dependencies]
+rivium = { version = "=0.2.0", features = ["rt"] }
+rivium-host = { version = "=0.2.0", features = ["embedded", "process"] }
+rivium-jni = "=0.2.0"
+rivium-http = { version = "=0.2.0", features = ["server"] }
+axum = { version = "0.8", default-features = false, features = ["json"] }
+apalis = "=1.0.0"
+apalis-sqlite = { version = "=1.0.0", default-features = false, features = ["migrate", "json"] }
+sqlx = { version = "=0.9.0", default-features = false, features = ["runtime-tokio", "sqlite", "migrate", "json"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["rt", "time", "sync", "fs", "io-util"] }
+ulid = "3"
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "json"] }
+
+[profile.release]
+panic = "unwind"
